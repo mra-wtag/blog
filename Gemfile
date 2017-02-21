@@ -8,6 +8,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'simple_form'
 gem 'sdoc', group: :doc
 
 group :development, :test do
