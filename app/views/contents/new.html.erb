@@ -1,5 +1,16 @@
-<h1>New Content</h1>
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
 
-<%= render 'form', content: @content %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-9"><h1>Post your Content</h1></div>
+          <div class="col-xs-3" id="post-btn"><%= link_to 'All Post', contents_url, id: 'new-post-btn', class: 'btn btn-primary' %></div>
+        </div>
+      </div>
+    </div>
 
-<%= link_to 'Back', contents_path %>
+    <%= render 'form', content: @content, value: 'Post on Blog' %>
+  </div>
+</div>

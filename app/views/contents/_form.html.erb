@@ -1,20 +1,5 @@
 <%= simple_form_for @content do |f| %>
-  <% if content.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</h2>
-
-      <ul>
-      <% content.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.input :title %>
-  <%= f.input :body %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.input :title, label: false, input_html: { class: 'form-control col-xs-10', id: 'title-box', placeholder: 'Title of your Content' } %>
+  <%= f.input :body, :as => :text, label: false, input_html: { class: 'form-control col-xs-10 space-btn-input redactor', id: 'body-box', rows: 10, placeholder: 'Body of the Content' } %>
+  <%= f.submit value, class: 'col-xs-5 btn btn-primary space-btn-input submit_btn' %>
 <% end %>
