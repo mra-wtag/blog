@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'redcarpet', '~> 3.0.0'
 gem 'sdoc', group: :doc
 
 group :development, :test do
