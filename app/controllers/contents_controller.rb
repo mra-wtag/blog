@@ -20,7 +20,7 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update(content_params)
-      flash[:notice] = 'Content was Successfully Edited.'
+      flash[:notice] = t 'notice.edit'
       render 'show'
     else
       redirect_to @content
@@ -29,17 +29,15 @@ class ContentsController < ApplicationController
 
   def destroy
     @content.destroy
-    flash[:notice] = 'Content was successfully destroyed.'
+    flash[:notice] = t 'notice.destroy'
     redirect_to contents_url
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_content
       @content = Content.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
       params.fetch(:content, {}).permit(:title, :body)
     end

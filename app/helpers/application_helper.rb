@@ -17,7 +17,7 @@ module ApplicationHelper
       hard_wrap: true,
       prettify: true,
     }
-    render_html = Redcarpet::Render::HTML.new(render_options = {})
+    render_html = Redcarpet::Render::HTML.new(render_options)
     @markdown ||= Redcarpet::Markdown.new(render_html, @options)
     @markdown.render(text).html_safe
   end

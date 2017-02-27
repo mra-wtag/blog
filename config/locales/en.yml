@@ -20,4 +20,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: Keep Blogging
+  notice:
+    edit: Content was Successfully Edited.
+    destroy: Content was successfully destroyed.
+    confirm: Are you sure?
+    congratulation: Congratulation!
+  content:
+    new: Post your Content
+    title: Title of your Post
+    body: Body of the Post
+    edit: Edit This Post
+    index_title: Your Posts
+    new_title: New Post
+    published_on: Published On
+    delete: Delete this Post
+    new_button: Post on Blog
+  button:
+    delete: Delete
+    edit: Edit
+    index: All Post
+    edit_post: Edit Post
+
