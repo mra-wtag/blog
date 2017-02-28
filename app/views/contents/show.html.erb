@@ -1,0 +1,52 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success"><strong><%= t('notice.congratulation') + ' ' + flash[:notice] %></strong></div>
+<% end %>
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-3" id="post-btn">
+            <%= link_to t('button.edit'), edit_content_path, id: 'new-post-btn', class: 'btn btn-primary' %>
+          </div>
+          <div class="col-xs-3" id="post-btn">
+            <%= link_to t('button.delete'),
+                        content_path,
+                        id: 'new-post-btn',
+                        method: :delete,
+                        data: { confirm: t('notice.confirm') },
+                        class: 'btn btn-primary' %>
+          </div>
+          <div class="col-xs-3" id="post-btn">
+            <%= link_to t('content.new_title'), new_content_path, id: 'new-post-btn', class: 'btn btn-primary' %>
+          </div>
+          <div class="col-xs-3" id="post-btn">
+            <%= link_to t('button.index'), contents_url, id: 'new-post-btn', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="single-content">
+      <div class="col-xs-12">
+        <div class="row single-show">
+          <div class="col-xs-9" id="title-show">
+            <%= link_to @content.title, @content %>
+          </div>
+          <div class="col-xs-3">
+            <div class="row">
+              <div class="col-xs-12" id="published-on">
+                <%= "#{t('content.published_on')}: #{@content.created_at.to_date}" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row single-show">
+          <div class="col-xs-12" id="single-show-body">
+            <%= markdown(@content.body) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

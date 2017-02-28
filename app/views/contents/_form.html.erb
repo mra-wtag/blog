@@ -1,0 +1,22 @@
+<%= simple_form_for @content do |f| %>
+  <%= f.input :title,
+              label: false,
+              input_html: {
+                  class: 'form-control col-xs-10',
+                  id: 'title-box',
+                  placeholder: t('content.title')
+              }
+  %>
+
+  <%= f.input :body,
+              as: :text,
+              label: false,
+              input_html: {
+                  class: 'form-control col-xs-10 space-btn-input redactor',
+                  id: 'body-box',
+                  rows: 10,
+                  placeholder: t('content.body') }
+  %>
+
+  <%= f.submit value, class: 'col-xs-5 btn btn-primary space-btn-input submit_btn' %>
+<% end %>

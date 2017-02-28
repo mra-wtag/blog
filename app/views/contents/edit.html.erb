@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-6"><h1><%= t('content.edit') %></h1></div>
+          <div class="col-xs-3" id="post-btn">
+            <%= link_to t('button.delete'), content_path,
+                        id: 'new-post-btn',
+                        method: :delete,
+                        data: { confirm: t('notice.confirm') },
+                        class: 'btn btn-primary' %>
+          </div>
+          <div class="col-xs-3" id="post-btn">
+            <%= link_to t('button.index'), contents_url, id: 'new-post-btn', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'form', content: @content, value: t('button.edit_post') %>
+  </div>
+</div>
