@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<div id="top-nav-bar">
+  <% if signed_in? %>
+    <div id="nav-bar-info" class="row">
+      <div id="email"><%= current_user.email %></div>
+      <%= link_to t('nav_bar.sign_out'), sign_out_path, method: :delete, id: "sign-out", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+
 <div id="main-container" class="container">
   <div class="panel panel-default">
     <div class="panel-heading"><%= t 'title' %>...</div>

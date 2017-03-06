@@ -21,6 +21,8 @@
 
 en:
   title: Keep Blogging
+  nav_bar:
+    sign_out: Sign out
   notice:
     edit: Content was Successfully Edited.
     destroy: Content was successfully destroyed.

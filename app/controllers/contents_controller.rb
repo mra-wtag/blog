@@ -1,8 +1,9 @@
 class ContentsController < ApplicationController
+  before_action :require_login
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = Content.all
+    current_user.contents
   end
 
   def new

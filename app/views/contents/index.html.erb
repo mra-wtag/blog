@@ -7,8 +7,11 @@
     <div class="row">
       <div class="col-xs-11">
         <div class="row">
-          <div class="col-xs-9">
-            <h1><%= t('content.index_title') %></h1>
+          <div class="col-xs-6">
+            <h1><%= t('button.index') %></h1>
+          </div>
+          <div class="col-xs-3" id="post-btn">
+            <%= link_to t('content.index_title'), new_content_path, id: 'new-post-btn', class: 'btn btn-primary' %>
           </div>
           <div class="col-xs-3" id="post-btn">
             <%= link_to t('content.new_title'), new_content_path, id: 'new-post-btn', class: 'btn btn-primary' %>
