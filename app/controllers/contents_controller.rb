@@ -1,9 +1,8 @@
 class ContentsController < ApplicationController
-  before_action :require_login
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    current_user.contents
+    @posts = session[:personal_posts] ? current_user.contents : Content.all
   end
 
   def new
@@ -12,11 +11,17 @@ class ContentsController < ApplicationController
 
   def create
     @content = Content.new(content_params)
+    @content.user = current_user
     if @content.save
       redirect_to action: 'index'
     else
       redirect_to @content
     end
+  end
+
+  def personal_posts
+    session[:personal_posts] = true
+    redirect_to contents_url
   end
 
   def update
