@@ -12,6 +12,7 @@ gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'redcarpet', '~> 3.0.0'
 gem 'clearance'
+gem 'cancancan'
 gem 'web-console', group: :development
 gem 'sdoc', group: :doc
 

@@ -2,8 +2,7 @@
     <div class="alert alert-success"> <strong><%= t('notice.congratulation') + ' ' + flash[:notice] %></strong></div>
 <% end %>
 <div class="row">
-  <div class="col-xs-1"></div>
-  <div class="col-xs-11">
+  <div class="col-xs-12">
     <div class="row">
       <div class="col-xs-11">
         <div class="row">
@@ -13,7 +12,7 @@
           </div>
           <div class="col-xs-3" id="post-btn">
             <% if post_type %>
-              <%= link_to t('button.index'), contents_url, id: 'new-post-btn', class: 'btn btn-primary' %>
+              <%= link_to t('button.index'), contents_all_posts_path, method: :post, id: 'new-post-btn', class: 'btn btn-primary' %>
             <% else %>
               <%= link_to t('content.index_title'), contents_personal_posts_path, method: :post, id: 'new-post-btn', class: 'btn btn-primary' %>
             <% end %>
@@ -61,5 +60,3 @@
     <% end %>
   </div>
 </div>
-
-<% session[:personal_posts] = nil %>

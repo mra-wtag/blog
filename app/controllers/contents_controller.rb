@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -21,6 +22,11 @@ class ContentsController < ApplicationController
 
   def personal_posts
     session[:personal_posts] = true
+    redirect_to contents_url
+  end
+
+  def all_posts
+    session[:personal_posts] = nil
     redirect_to contents_url
   end
 
