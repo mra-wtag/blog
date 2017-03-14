@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
   rescue_from 'CanCan::AccessDenied' do |exception|
+    flash[:notice] = t 'notice.unauthorized_action'
     redirect_to contents_url
   end
 end

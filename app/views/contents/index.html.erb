@@ -1,5 +1,5 @@
 <% if flash[:notice] %>
-    <div class="alert alert-success"> <strong><%= t('notice.congratulation') + ' ' + flash[:notice] %></strong></div>
+    <div class="alert alert-success"> <strong><%= flash[:notice] %></strong></div>
 <% end %>
 <div class="row">
   <div class="col-xs-12">
@@ -44,16 +44,20 @@
                 <%= "#{t('content.published_on')}: #{content.created_at.to_date}" %>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12" id="delete-post">
-                <%= link_to t('content.delete'), content, method: :delete, data: { confirm: t('notice.confirm') } %>
+            <% if can? :destroy, content %>
+              <div class="row">
+                <div class="col-xs-12" id="delete-post">
+                  <%= link_to t('content.delete'), content, method: :delete, data: { confirm: t('notice.confirm') } %>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12" id="delete-post">
-                <%= link_to t('content.edit'), edit_content_path(content) %>
+            <% end %>
+            <% if can? :edit, content %>
+              <div class="row">
+                <div class="col-xs-12" id="delete-post">
+                  <%= link_to t('content.edit'), edit_content_path(content) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

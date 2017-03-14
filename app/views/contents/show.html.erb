@@ -1,22 +1,26 @@
 <% if flash[:notice] %>
-    <div class="alert alert-success"><strong><%= t('notice.congratulation') + ' ' + flash[:notice] %></strong></div>
+    <div class="alert alert-success"><strong><%= flash[:notice] %></strong></div>
 <% end %>
 <div class="row">
   <div class="col-xs-10">
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-3" id="post-btn">
-            <%= link_to t('button.edit'), edit_content_path, id: 'new-post-btn', class: 'btn btn-primary' %>
-          </div>
-          <div class="col-xs-3" id="post-btn">
-            <%= link_to t('button.delete'),
-                        content_path,
-                        id: 'new-post-btn',
-                        method: :delete,
-                        data: { confirm: t('notice.confirm') },
-                        class: 'btn btn-primary' %>
-          </div>
+          <% if can? :edit, @content %>
+            <div class="col-xs-3" id="post-btn">
+              <%= link_to t('button.edit'), edit_content_path, id: 'new-post-btn', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+          <% if can? :destroy, @content %>
+            <div class="col-xs-3" id="post-btn">
+              <%= link_to t('button.delete'),
+                          content_path,
+                          id: 'new-post-btn',
+                          method: :delete,
+                          data: { confirm: t('notice.confirm') },
+                          class: 'btn btn-primary' %>
+            </div>
+          <% end %>
           <div class="col-xs-3" id="post-btn">
             <%= link_to t('content.new_title'), new_content_path, id: 'new-post-btn', class: 'btn btn-primary' %>
           </div>
