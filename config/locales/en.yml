@@ -21,11 +21,13 @@
 
 en:
   title: Keep Blogging
+  nav_bar:
+    sign_out: Sign out
   notice:
-    edit: Content was Successfully Edited.
-    destroy: Content was successfully destroyed.
+    edit: Congratulation! Content was Successfully Edited.
+    destroy: Congratulation! Content was successfully destroyed.
     confirm: Are you sure?
-    congratulation: Congratulation!
+    unauthorized_action: You are not Authorized to perform this action!
   content:
     new: Post your Content
     title: Title of your Post

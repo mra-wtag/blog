@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include Clearance::Controller
   protect_from_forgery with: :exception
+  before_action :require_login
+
+  rescue_from 'CanCan::AccessDenied' do |exception|
+    flash[:notice] = t 'notice.unauthorized_action'
+    redirect_to contents_url
+  end
 end

@@ -8,12 +8,32 @@
 </head>
 <body>
 
+<div id="top-nav-bar">
+  <% if signed_in? %>
+    <div id="nav-bar-info" class="row">
+      <div id="email"><%= current_user.email %></div>
+      <%= link_to t('nav_bar.sign_out'), sign_out_path, method: :delete, id: "sign-out", class: 'btn btn-primary' %>
+    </div>
+  <% elsif request.original_url.split('/').include? 'sign_up' %>
+    <div id="nav-bar-info" class="row">
+      <div id="email">Already have an account?</div>
+      <%= link_to t(".sign_in"), sign_in_path, id: "sign-out", class: 'btn btn-primary' %>
+    </div>
+  <% else %>
+      <div id="nav-bar-info" class="row">
+        <div id="email">Don't have a Blog?</div>
+        <%= link_to t(".sign_up"), sign_up_path, id: "sign-out", class: 'btn btn-primary' %>
+      </div>
+  <% end %>
+</div>
+
 <div id="main-container" class="container">
   <div class="panel panel-default">
     <div class="panel-heading"><%= t 'title' %>...</div>
     <div class="panel-body">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-11" id="main-content">
           <%= yield %>
         </div>
       </div>

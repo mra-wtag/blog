@@ -1,8 +1,9 @@
 class ContentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = Content.all
+    @posts = session[:personal_posts] ? current_user.contents : Content.all
   end
 
   def new
@@ -11,11 +12,22 @@ class ContentsController < ApplicationController
 
   def create
     @content = Content.new(content_params)
+    @content.user = current_user
     if @content.save
       redirect_to action: 'index'
     else
       redirect_to @content
     end
+  end
+
+  def personal_posts
+    session[:personal_posts] = true
+    redirect_to contents_url
+  end
+
+  def all_posts
+    session[:personal_posts] = nil
+    redirect_to contents_url
   end
 
   def update
