@@ -5,8 +5,10 @@ require 'rspec/rails'
 require 'factory_girl_rails'
 require 'database_cleaner'
 require 'shoulda/matchers'
+require 'clearance/rspec'
 #
 # ActiveRecord::Migration.maintain_test_schema!
+Dir['./spec/support/**/*.rb'].sort.each { |file| require file }
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -30,6 +32,7 @@ RSpec.configure do |config|
       example.run
     end
   end
+  config.include ClearanceHelpers, type: :feature
 end
 
 Shoulda::Matchers.configure do |config|

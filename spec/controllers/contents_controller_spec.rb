@@ -1,12 +1,41 @@
 require 'spec_helper'
 
 RSpec.describe ContentsController, type: :controller do
-  let(:content) { FactoryGirl.create :content }
+  let(:user) { FactoryGirl.create :user }
+  let(:content) { FactoryGirl.create(:content, user: user) }
+
+  before do
+    sign_in_as user
+  end
 
   describe 'GET #index' do
-    it 'get all contents' do
-      get :index
-      expect(assigns(:contents)).to eq([content])
+    let(:user_2) { FactoryGirl.create :user }
+    let(:user_3) { FactoryGirl.create :user }
+    let!(:content_2) { FactoryGirl.create(:content, user: user_2) }
+    let!(:content_3) { FactoryGirl.create(:content, user: user_3) }
+
+    context 'get all contents when personal_posts false' do
+      before do
+        session[:personal_posts] = false
+      end
+
+      it 'get all contents' do
+        get :index
+        expect(assigns(:posts)).to match_array([content, content_2, content_3])
+        session[:personal_posts] = nil
+      end
+    end
+
+    context 'get only own contents when personal_posts true' do
+      before do
+        session[:personal_posts] = true
+      end
+
+      it 'get only own contents' do
+        get :index
+        expect(assigns(:posts)).to match_array([content])
+        session[:personal_posts] = nil
+      end
     end
 
     it 'renders the :index template' do
